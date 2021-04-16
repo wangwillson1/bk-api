@@ -1,17 +1,21 @@
 // require packages and setting port
 const express = require('express');
 const port = 8000
-const bodyParser = require('body-parser');
 const app = express();
-const routes = require('./routes/index');
+const bodyParser = require('body-parser');
+
+const index = require('./routes/index');
+const users = require('./routes/users');
 
 // json parsing
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: true
-}))
+    extended: false
+}));
 
-routes(app)
+// routing
+app.use('/', index);
+app.use('/users', users);
 
 // server
 const server = app.listen(port, (error) => {

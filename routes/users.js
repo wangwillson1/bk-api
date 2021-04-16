@@ -1,20 +1,20 @@
 const express = require('express')
 const router = express.Router()
 
-const data = [{
+const users = [{
     id: 1,
-    name: "d1",
+    name: "u1",
     email: "e1",
 },
 {
     id: 2,
-    name: "d2",
+    name: "u2",
     email: "e2",
 },
 ];
 
 router.get("/", (req, res) => {
-    res.send({data})
+    res.send({users})
 })
 
 module.exports = router;
