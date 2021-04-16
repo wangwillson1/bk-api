@@ -4,6 +4,7 @@ const port = 8000
 const app = express();
 const bodyParser = require('body-parser');
 
+// routes requirements
 const index = require('./routes/index');
 const users = require('./routes/users');
 
