@@ -70,7 +70,7 @@ exports.signin = async (req, res) => {
         // assign proper roles for permissions
         var authorities = [];
         let roles = await user.getRoles()
-        roles.forEach(role => authorities.push("ROLE_" + role.name.toUpperCase()));
+        roles.forEach(role => authorities.push(role.name.toUpperCase()));
 
         res.status(200).send({
             id: user.id,
