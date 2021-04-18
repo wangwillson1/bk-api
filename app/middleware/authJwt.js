@@ -28,10 +28,12 @@ isAdmin = async (req, res, next) => {
     let user = await User.findByPk(req.userId);
     let userRoles = await user.getRoles();
     
-    if (userRoles.contains("admin")) {
-        next();
-        return;
-    }
+    userRoles.forEach(role => {
+        if (role.name == "admin") {
+            next();
+            return;
+        }
+    });
 
     res.status(403).send({
         message: "ERROR: Requires admin role"
@@ -42,10 +44,12 @@ isLandlord = async (req, res, next) => {
     let user = await User.findByPk(req.userId);
     let userRoles = await user.getRoles();
     
-    if (userRoles.contains("landlord")) {
-        next();
-        return;
-    }
+    userRoles.forEach(role => {
+        if (role.name == "landlord") {
+            next();
+            return;
+        }
+    });
 
     res.status(403).send({
         message: "ERROR: Requires landlord role"

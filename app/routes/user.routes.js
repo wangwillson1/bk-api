@@ -14,20 +14,20 @@ router.use(function(req, res, next) {
 router.get("/all", controller.allAccess);
 
 router.get(
-    "/api/test/user",
+    "/user",
     [authJwt.verifyToken],
     controller.userBoard
 );
 
 router.get(
-  "/api/test/landlord",
-  [authJwt.verifyToken],
+  "/landlord",
+  [authJwt.verifyToken, authJwt.isLandlord],
   controller.landlordBoard
 );
 
 router.get(
-  "/api/test/admin",
-  [authJwt.verifyToken],
+  "/admin",
+  [authJwt.verifyToken, authJwt.isAdmin],
   controller.adminBoard
 );
   
